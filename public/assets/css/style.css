@@ -17,11 +17,11 @@ span.badge {
 }
 
 nav {
-    background-color: #9932CD;
+    background-color: #3914AF;
 }
 
 footer.page-footer {
-    background-color: #9932CD;
+    background-color: #3914AF;
 }
 
 .btn, .btn-large {
@@ -41,20 +41,20 @@ nav form {
 }
 
 .card-panel {
-    background-color: #b9354a;
-    color: #ffafad;
+    background-color: #FFAA00;
+    color: #009999;
 }
 
 h1 {
-	color: #b9354a;
+	color: #FFAA00;
 }
 
 h2 {
-	color: #b9354a;
+	color: #FFAA00;
 }
 
 .page-footer h5 {
-	color: #ffafad;
+	color: #009999;
 }
 
 .page-footer p, .page-footer ul li a {
