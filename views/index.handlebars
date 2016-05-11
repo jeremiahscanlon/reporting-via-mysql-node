@@ -1,0 +1,51 @@
+
+<div class="col s8">
+	<div class="panel panel-default">
+		<h2 style="text-align:center">All the products</h2>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>Code</th>
+					<th>Description</th>
+					<th>Available</th>
+					<th>Price</th>
+					<th>Family</th>
+					<th>Class ID</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each products}}
+				<tr>
+					<th scope=row>{{code}}</th>
+					<td>{{description}}</td>
+					<td>{{inventory_available}}</td>
+					<td>{{sell_price}}</td>
+					<td>{{family}}</td>
+					<td>{{class_id}}</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="col s4">
+	<div class="panel panel-default">
+		<h2 style="text-align:center">All the classes</h2>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Class Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each classes}}
+				<tr>
+					<th scope=row>{{class_id}}</th>
+					<td>{{name}}</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>
