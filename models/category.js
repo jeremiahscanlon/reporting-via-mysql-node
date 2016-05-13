@@ -4,8 +4,8 @@ var Sequelize = require("sequelize");
 // require the connection to the db
 var sequelize = require("../config/connection.js"); 
 
-// "classes" model that matches up with DB
-var classes = sequelize.define("classes", {
+// "categories" model that matches up with DB
+var categories = sequelize.define("categories", {
 	id: {
 		type: Sequelize.INTEGER,
 		autoIncrement: true,
@@ -14,7 +14,7 @@ var classes = sequelize.define("classes", {
 	location_id: {
 		type: Sequelize.INTEGER
 	},
-	class_id: {
+	category_id: {
 		type: Sequelize.INTEGER
 	},
 	name: {
@@ -26,10 +26,10 @@ var classes = sequelize.define("classes", {
 });
 
 // Syncs with DB
-classes.sync({}).then(function () {
+categories.sync({}).then(function () {
   // Table created
-  console.log('classes table done syncingx')
+  console.log('categories table done syncing')
 });
 
-// Makes the classes Model available for other files (will also create a table)
-module.exports = classes;
+// Makes the categories Model available for other files (will also create a table)
+module.exports = categories;

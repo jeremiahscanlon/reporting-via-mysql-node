@@ -11,7 +11,7 @@ var products = sequelize.define("products", {
 		autoIncrement: true,
 		primaryKey: true
 	},
-	class_id: {
+	category_id: {
 		type: Sequelize.INTEGER
 	},
 	sell_price: {

@@ -1,5 +1,4 @@
-
-<div class="col s8">
+<div class="col s12">
 	<div class="panel panel-default">
 		<h2 style="text-align:center">All the products</h2>
 		<table class="table table-bordered table-striped">
@@ -21,28 +20,7 @@
 					<td>{{inventory_available}}</td>
 					<td>{{sell_price}}</td>
 					<td>{{family}}</td>
-					<td>{{category_id}}</td>
-				</tr>
-				{{/each}}
-			</tbody>
-		</table>
-	</div>
-</div>
-<div class="col s4">
-	<div class="panel panel-default">
-		<h2 style="text-align:center">All the categories</h2>
-		<table class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Class Name</th>
-				</tr>
-			</thead>
-			<tbody>
-				{{#each categories}}
-				<tr>
-					<th scope=row>{{category_id}}</th>
-					<td>{{name}}</td>
+					<td>{{category}}</td>
 				</tr>
 				{{/each}}
 			</tbody>
