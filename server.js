@@ -25,7 +25,7 @@ require("./routes/apiRoutes.js")(app)
 require("./routes/htmlRoutes.js")(app)
 
 // start the server
-var PORT = process.env.PORT || 8686;
+var PORT = process.env.PORT || 80;
 app.listen(PORT, function(){
 	console.log('Find the magic at port: ' + PORT);
 })
