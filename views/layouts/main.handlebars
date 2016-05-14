@@ -11,7 +11,7 @@
 	<!-- Favicon image -->
 	<link rel="shortcut icon" type="image/ico" href="favicon.ico" />
 	<!-- Standard reset.css from http://meyerweb.com/eric/tools/css/reset/ -->
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
 	<!-- Josefin Google Fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,100,300,300italic,400italic,600,600italic,700,100italic|Josefin+Slab:400,400italic,600,600italic,700,300' rel='stylesheet' type='text/css'>
 	<!-- Materiallize - icons -->
@@ -19,30 +19,53 @@
 	<!-- Materiallize - Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 	<!-- Our custom css file -->	
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 
 	<!-- Minified jquery -->
 	<script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
 	<!-- Materiallize - Compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-	<!-- link to firebase -->
-	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
-	<!-- moment.js -->
-	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
 </head>
 <body>
 	<div class="navbar-fixed">
 		<nav>
 			<div class="nav-wrapper container">
-				<a href="index.html" class="brand-logo"><img id="headerLogo" src="assets/images/Reporting_Platform_logo.png" alt="Reporting Platform logo"></a>
+				<a href="index.html" class="brand-logo"><img id="headerLogo" src="/assets/images/Reporting_Platform_logo.png" alt="Reporting Platform logo"></a>
 			</div>
 		</nav>
 	</div>
 
 	<div class="container">
 		<div class="row">
-			{{{body}}}
+			<div class="col s12">
+				<div class="panel">
+					<h2 style="text-align:center">Run the report to find out what the dealio is ...</h2>
+					<div class="col s12">
+						<div class="row">
+							<div class="input-field col s4">
+								<select id="selector">
+									<option value="0" disabled>Filter by Class</option>
+								</select>
+							</div>
+							<div class="input-field col s3">
+								<input id="priceSearch" type="text" class="">
+								<label for="priceSearch">Price greater than ... </label>
+							</div>
+							<div class="input-field col s3">
+								<input id="qtySearch" type="text" class="">
+								<label for="qtySearch">QTY In-stock greater than ... </label>
+							</div>
+							<div class="input-field col s2">
+								<a class="waves-effect waves-light btn" id="searchSubmit">SUBMIT</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					{{{body}}}
+				</div>
+			</div>
 		</div>
 	</div>
 	
@@ -68,45 +91,40 @@
 		</div>
 	</footer>
 	
-	<!-- Modal1 -->
-	<div id="modal1" class="modal">
-		<div class="modal-content">
-			<h4 id="modal1Header"></h4>
-			<p id="modal1Text"></p>
-		</div>
-		<div class="modal-footer">
-			<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Kewl</a>
-		</div>
-	</div>
-
-	<!-- Login Modal-->
-	<div id="modalLogin" class="modal">
-		<div class="modal-content">
-			<h4 id="modalLoginHeader"></h4>
-			<p id="modalLoginText">
-				<div class="row">
-					<div class="input-field col s12">
-						<i class="material-icons prefix">email</i>
-						<input id="loginEmail" type="email" class="validate">
-						<label for="email" data-error="please enter a valid email">Enter Your Email</label>
-					</div>
-					<div class="input-field col s12">
-						<i class="material-icons prefix">lock_outline</i>
-						<input id="loginPassword" type="password" class="validate">
-						<label for="icon_prefix">Choose A Password</label>
-					</div>
-				</div>
-			</p>
-		</div>
-		<div class="modal-footer">
-			<button class="btn waves-effect waves-light" type='button' id="loginSubmit">Submit
-				<i class="material-icons right">send</i>
-			</button>
-			<button class="btn waves-effect waves-light" type='button' id="cancel">Cancel
-				<i class="material-icons right">close</i>
-			</button>
-		</div>
-	</div>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var currentUrl = window.location.origin;
+		$('#searchSubmit').click(function(){
+			var classSearch = $( "#selector" ).val();
+			var priceSearch = $('#priceSearch').val().trim();
+			var qtySearch = $('#qtySearch').val().trim();
+			
+			if (!priceSearch & !qtySearch & !classSearch) {
+				location.href = currentUrl + "/report/";
+				return false;
+			} else {
+				if (!priceSearch & !qtySearch) {
+					location.href = currentUrl + "/report/"+classSearch;
+					return false;
+				}else {
+					location.href = currentUrl + "/report/"+classSearch+"/"+priceSearch+"/"+qtySearch;
+					return false;
+				}
+			}
+		});
+		
+		// console.log(currentUrl);
+		$.get(currentUrl + "/api/allcategories")
+		.done(function(data){
+			//console.log(data[0].name);
+			for (var i = 0; i < data.length; i++) {
+				var className = data[i].name;
+				var option = '<option value="'+className+'">'+className+'</option>';
+				$('#selector').append(option);
+			};
+		});
+	});
+	</script>
 
 </body>
 </html>

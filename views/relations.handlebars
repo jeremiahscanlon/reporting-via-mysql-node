@@ -1,29 +1,24 @@
-<div class="col s12">
-	<div class="panel panel-default">
-		<h2 style="text-align:center">All the products</h2>
-		<table class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<th>Code</th>
-					<th>Description</th>
-					<th>Available</th>
-					<th>Price</th>
-					<th>Family</th>
-					<th>Class ID</th>
-				</tr>
-			</thead>
-			<tbody>
-				{{#each products}}
-				<tr>
-					<th scope=row>{{code}}</th>
-					<td>{{description}}</td>
-					<td>{{inventory_available}}</td>
-					<td>{{sell_price}}</td>
-					<td>{{family}}</td>
-					<td>{{category}}</td>
-				</tr>
-				{{/each}}
-			</tbody>
-		</table>
-	</div>
-</div>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Code</th>
+			<th>Description</th>
+			<th>Available</th>
+			<th>Price</th>
+			<th>Family</th>
+			<th>Class ID</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each products}}
+		<tr>
+			<th scope=row>{{code}}</th>
+			<td>{{description}}</td>
+			<td>{{inventory_available}}</td>
+			<td>{{sell_price}}</td>
+			<td>{{family}}</td>
+			<td>{{category.name}}</td>
+		</tr>
+		{{/each}}
+	</tbody>
+</table>

@@ -61,31 +61,11 @@ h2 {
 	color: #fff;
 }
 
-#cancel {
-	margin-right: 15px;
-}
-
-#modalLogin {
-	overflow: hidden;
-}
-
-#modalLogin .modal-footer {
-	padding: 0px 35px;
-}
-
 .smallSquareLogo {
 	max-width: 30px;
 	height: auto;
 }
 
-.createkwerry {
-	margin-top: 25px;
-}
-
-.parallax-container {
-	height: 300px;
-}
-
-.singleKwerry td {
-	
+#selector  {
+	display: block;
 }
